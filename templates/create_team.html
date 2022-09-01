@@ -1,0 +1,58 @@
+{% extends("base.html") %}
+
+{% block title %}Create Player{% endblock %}
+
+{% block content %}
+
+    <div class="container p-2">
+    
+        <div class="text-center mt-3">
+            <h6 class="display-3 text-capitalize"> Create a Team <h6>
+            <div class="heading-line mb-1"></div>
+        </div>
+
+        <br>
+        
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                {{ form.name.label(class = "form-label") }}
+                
+                {% if team != "none" %}
+                    {{ form.name(class = "form-control", readonly=true) }}
+                {% else %}
+                    {{ form.name(class = "form-control") }}
+                {% endif %}
+                
+                <br>
+
+                {{ form.text.label(class = "form-label") }}
+                {{ form.text(class = "form-control") }}
+                <br>
+
+                {{ form.palmares.label(class = "form-label") }}
+                {{ form.palmares(class = "form-control") }}
+                <br>
+
+                {{ form.type.label(class = "form-label") }}
+                {{ form.type(class = "form-select") }}
+                <br>
+
+                {{ form.image.label(class = "form-label") }}
+                {{ form.image(class = "form-control") }}
+                <br>
+
+                {{ form.submit(class = "btn btn-outline-dark" ) }}
+
+            </form>
+
+            {{ ckeditor.load() }}
+            {{ ckeditor.config(name='text') }}
+            {{ ckeditor.config(name='palmares') }}
+
+        </div>
+        <br>
+    </div>
+
+{% endblock %}

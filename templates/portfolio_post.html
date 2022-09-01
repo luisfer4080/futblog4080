@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %} Historias {% endblock %}
+
+{% block content %}
+    <section class="portfolio" id="portfolio">
+        <div class="container p-2r">
+            <div class="text-center mt-3">
+                <h3 class="display-3 text-capitalize">Latest posts</h3>
+                <div class="heading-line mb-1"></div>
+                <p class="lead">
+                Todas las historias de este Blog
+                </p>
+            </div>
+            <!-- Filter buttons -->
+            <div class="row mt-5 mb-4 g-3 text-center">
+                <div class="col-md-12">
+                <button class="btn btn-outline-primary" type="button" id="all">All</button>
+                <button class="btn btn-outline-primary" type="button" id="website_b">Newest</button>
+                </div>
+            </div>
+            <!-- Portfolio content -->
+            <div class="row">
+                {% for post in posts %}
+                    <div class="col-lg-4 col-md-6" id="website">
+                        <div class="portfolio-box shadow">
+                            <img src="{{url_for('static', filename = 'images/'+ post.post_pic)}}" alt="portfolio 1 image" title="portfolio 1 picture" class="img-fluid">
+                            <div class="portfolio-info">
+                                <div class="caption">
+                                    <h4><a href="/post/view/{{ post.id }}" style="color: white;">{{post.title}}</a></h4>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <br>
+    {% include 'footer.html' %}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends("base.html") %}
+
+{% block title %}Update Post{% endblock %}
+
+{% block content %}
+
+    <div class="container p-2">    
+        <div class="text-center mt-3">
+            <h6 class="display-3 text-capitalize"> Update Post {{post_to_update.slug}} <h6>
+            <div class="heading-line mb-1"></div>
+        </div>
+
+        <br>
+
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                
+                {{ form.title.label(class = "form-label") }}
+                {{ form.title(class = "form-control", value=post_to_update.title) }}
+                <br>
+
+                {{ form.content.label(class = "form-label") }}
+                {{ form.content(class = "form-control") }}
+                <br>
+
+                {{ form.slug.label(class = "form-label") }}
+                {{ form.slug(class = "form-control", value=post_to_update.slug) }}
+                <br>
+
+                {{ form.image.label(class = "form-label") }}
+                {{ form.image(class = "form-control", value=post_to_update.post_pic) }}
+                <br>
+
+                {{ form.submit(class = "btn btn-outline-dark" ) }}
+
+                <a href="{{ url_for('delete_post', id = post_to_update.id)}}" class="btn btn-outline-danger" >Delete</a>
+
+            </form>
+
+            {{ ckeditor.load() }}
+            {{ ckeditor.config(name='content') }}
+        </div>
+        <br>
+    </div>
+
+{% endblock %}

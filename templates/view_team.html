@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}{{team.name}}{% endblock %}
+
+{% block content %}
+    <div class="container p-2">
+        <h1> {{team.name}} </h1>
+
+        <img src="{{url_for('static', filename = 'images/'+ team.team_pic)}}" class="img_view_team">
+        <div class="f-images">
+            <span> By <a href="/view_post/{{team.user.id}}" style="color: orangered">{{team.user.username}}</a> | {{team.date_created.strftime('%Y-%m-%d')}}</span>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-sm">
+                <strong>Information: </strong><br>
+                <p>{{team.text|safe}}</p><br>
+            </div>
+            <div class="col-sm">
+                <strong>Palmares: </strong><br>
+                <p>{{team.palmares|safe}}</p>
+            </div>
+        </div>
+
+        <br>
+
+        {% if current_user.id == 1 or current_user.id == team.user.id  %}
+            <a class="btn btn-outline-dark"  href="{{url_for('update_team', id=team.id)}}">Update Team</a>
+            <a class="btn btn-outline-danger"  href="{{ url_for('delete_team', id = team.id)}}">Delete Team</a>
+        {% endif %}
+    </div>
+
+    <br>
+    {% include 'footer.html' %}
+
+{% endblock %}

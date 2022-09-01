@@ -1,0 +1,43 @@
+{% extends("base.html") %}
+
+{% block title %}Update User{% endblock %}
+
+{% block content %}
+
+    <div class="container p-2">  
+        <div class="text-center mt-3">
+            <h6 class="display-3 text-capitalize"> Update user {{ user_to_update.username}} <h6>
+            <div class="heading-line mb-1"></div>
+        </div>
+        
+        <br>
+
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <form action="/update/{{user_to_update.id}}" method="POST">
+                {{ form.hidden_tag() }}
+
+                {{ form.name.label(class = "form-label") }}
+                {{ form.name(class = "form-control",value=user_to_update.name) }}
+                <br>
+
+                {{ form.username.label(class = "form-label") }}
+                {{ form.username(class = "form-control",value=user_to_update.username) }}
+                <br>
+
+                {{ form.email.label(class = "form-label") }}
+                {{ form.email(class = "form-control",value=user_to_update.email) }}
+                <br>
+
+                {{ form.password_hash.label(class = "form-label") }}
+                {{ form.password_hash(class = "form-control", value=user_to_update.password) }}
+                <br>
+
+                {{ form.submit(class = "btn btn-outline-dark" ) }}
+
+                <a href="{{url_for('delete_user', id = user_to_update.id )}}" class="btn btn-outline-danger" >Delete</a>
+            </form>
+        </div>
+        <br>
+    </div>  
+
+{% endblock %}

@@ -1,0 +1,265 @@
+body{
+    background-color: lightgray;
+}
+
+/* Views CCS */
+
+.f-images{
+    height: 35px;
+    padding: 3px;
+    background-color: white;
+}
+
+.view-content{
+    height: 20%;
+    margin: auto;
+    padding-top: 25px;
+    padding: 20px;
+    -webkit-columns: 250px 2;
+    -moz-columns: 250px 2;
+    columns: 250px 2;
+    -webkit-column-gap: 40px;
+    -moz-column-gap: 40px;
+    column-gap: 40px;
+    column-rule: solid 1p white;
+}
+
+/* Portfolio css */
+
+.portfolio{
+    padding: 4rem 0;
+}
+
+.portfolio button{
+    text-transform: capitalize ;
+}
+
+.portfolio-box{
+    position: relative;
+    width: 100%;
+    height: 18.5rem;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+    border-top: 0.4rem solid orangered;
+    text-align:center;
+}
+
+.portfolio-box img{
+    width: 100%;
+    height: 100%;
+}
+
+.portfolio-info{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.caption{
+    text-align: center;
+    color: white;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+   
+.caption h4{
+        text-transform: uppercase;
+        display: block;
+}
+
+             
+.portfolio-box img{
+    max-width: 100%;
+    max-height: 100%;
+    display: block; /* remove extra space below image */   
+}
+
+/*  admin view ccs */
+
+.user_profile_num{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    color: black;
+    font-size:xx-large;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin_images{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Index slides css */
+
+.a_car{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    padding: 5px;
+    transform: translate(-50%, -50%);
+    background:rgb(70, 71, 69);
+    opacity: 0.7;
+}
+
+.a_car a:hover{
+    color: darkorange;
+}
+
+.show_car{
+    width: 100%;
+    height: 450px;
+}
+
+.carousel-item{
+    height: 500px;
+}
+
+.img-index{
+    height: 500px;
+}
+
+.carousel-item img{
+    max-width: 100%;
+    max-height: 100%;
+    display: block; /* remove extra space below image */
+}
+
+.card-header img{
+    max-width: 100%;
+    max-height: 100%;
+    display: block; /* remove extra space below image */
+}
+
+
+/* player view css*/
+
+.player_img_profile{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+ul.nav li a{
+    color:rgb(0, 0, 0)
+}
+
+/* team view css*/
+
+.img_view_team{
+    display: block; 
+    width: 100%;
+    height: 400px;
+}
+
+/* post view css */
+
+.img_post_view{
+    display: block; 
+    width: 100%;
+    height: 400px;
+}
+
+/* index view css */
+
+.slide_link{
+    color: white;
+}
+
+/* footer */
+
+.footer{
+    margin-top: 80px;
+    background-color: rgba(19, 18, 18, 0.925);
+    height: 200px;
+    color: white;
+}
+
+.footer_link{
+    color: white;
+    text-decoration: none;
+}
+
+/* icons google size csss*/
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+
+
+@media (hover:hover){
+    .portfolio-info:hover{
+        background-color:rgba(255, 145, 0, 0.67);
+        opacity: 1;
+    }
+
+    .slide_link:hover{
+        color: yellow;
+    }
+
+    .footer_link:hover{
+        color: orangered;
+        text-decoration: none;
+    }
+}
+
+@media (hover:none){
+    .portfolio-info{
+        background-color:rgba(94, 93, 93, 0.67);
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .player_img{
+        width: 60px;
+        height: 60px;
+    }
+
+    .profile_info{
+        font-size: small;
+    }
+
+    .img_view_team{
+        height: 200px;
+    }
+
+    .img_post_view{
+        height: 200px;
+    }
+
+    .show_car{
+        width: 100%;
+        height: 250px;
+    }
+
+    .carousel-item{
+        height: 250px;
+    }
+
+    .img-index{
+        height: 250px;
+    }
+
+    .footer{
+        height: 380px;
+    }
+
+}

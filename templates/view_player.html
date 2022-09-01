@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}{{player.name}}{% endblock %}
+
+{% block content %}
+        
+    <div class="container p-2">
+        <br>
+
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-2 d-flex justify-content-center align-items-center">
+                        <img src="{{url_for('static', filename = 'images/'+ player.player_small_pic)}}" class="player_img_profile" align="left">
+                    </div>
+                    <div class="col-sm-6 profile_info">
+                        <strong>{{ player.name }} </strong><br>
+                        <strong>Nationality: </strong> {{ player.nationality }} <br>
+                        <strong>Age: </strong> {{ player.age }} <br>
+                        <strong>Teams: </strong> 
+                        {% for plays in player.plays %}
+                            {{ plays.name }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="card">
+            <div class="card-header">
+              <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="true" id="player-pro" href="#">Player Info</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="true" id="history-pro" href="#" >History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="true" id="palmares-pro" href="#">Palmares</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"aria-current="true" id="author-pro" href="#">Author info</a>
+                </li>
+              </ul>
+            </div>
+            <div class="card-body">
+                <div id="show-player-pro">
+                    <strong>Date of birth:</strong> {{ player.birth }} <br>
+                    <strong>Position: </strong> {{ player.position }} <br>
+                    <strong>Age: </strong> {{ player.age }} <br>
+                </div>
+                <div id="show-history-pro">
+                    <center>
+                        <strong>Information: </strong><br>
+                        <p>{{player.text|safe}}</p>
+                    </center>
+                </div>
+                <div id="show-palmares-pro">
+                    <center>
+                        <strong>Palmares: </strong><br>
+                        <p>{{player.palmares|safe}}</p>
+                    </center>
+                </div>
+                <div id="show-author-pro">
+                    <strong>Author: </strong> {{ player.user.username }} <br>
+                    <strong>Creation Date:</strong> {{ player.date_created.strftime('%Y-%m-%d') }}<br/> <br>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <a class="btn btn-outline-dark btn-sm"  href="{{url_for('update_player', id=player.id)}}">Update Player</a>
+        <a class="btn btn-outline-danger btn-sm"  href="{{ url_for('delete_player', id = player.id)}}">Delete Player</a>
+
+        <br>
+
+    </div>
+
+    {% include 'footer.html' %}
+{% endblock %}

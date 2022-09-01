@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}{{post.slug}}{% endblock %}
+
+{% block content %}
+    <div class="container p-2">
+        <br>
+        <h1> {{post.title}} </h1>
+        <br>
+
+        <img src="{{url_for('static', filename = 'images/'+ post.post_pic)}}" class="img_post_view">
+        <div class="f-images">
+            <span> By <a href="/view_post/{{post.user.id}}" style="color: orangered">{{post.user.username}}</a> | {{post.date_created.strftime('%Y-%m-%d')}}</span>
+        </div>
+
+        <div style="width: 100%">
+            <p>{{post.content|safe}} </p>
+        </div>  
+        <br>
+
+        {% if user.is_authenticated %}
+            {% if current_user.id == 1 or current_user.id == player.user.id  %}
+                <a class="btn btn-outline-dark"  href="{{url_for('update_post', id=post.id)}}">Update Post</a>
+                <a class="btn btn-outline-danger"  href="{{ url_for('delete_post', id = post.id)}}">Delete Post</a>
+            {% endif %}
+        {% endif %}
+    
+    </div>
+
+    <br>
+    {% include 'footer.html' %}
+
+{% endblock %}
+
+

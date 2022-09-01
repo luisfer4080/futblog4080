@@ -1,0 +1,138 @@
+{% extends("base.html") %}
+
+{% block title %}Admin{% endblock %}
+
+{% block content %}
+
+    <div class="container">    
+        <div class="text-center mt-3">
+            <h6 class="display-3 text-capitalize"> Admin Panel <h6>
+            <div class="heading-line mb-1"></div>
+        </div>
+
+        <center>
+            <h4>Welcome to the Admin Panel</h4>
+            <p>What do you want to do</p>
+            <br>
+
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <input type="button" class="btn-check" id="all" autocomplete="off">
+                <label class="btn btn-outline-dark" for="all">All</label>
+            
+                <input type="button" class="btn-check" id="users_button" autocomplete="off">
+                <label class="btn btn-outline-dark" for="users_button">Users</label>
+            
+                <input type="button" class="btn-check" id="posts_button" autocomplete="off">
+                <label class="btn btn-outline-dark" for="posts_button">Posts</label>
+
+                <input type="button" class="btn-check" id="teams_button" autocomplete="off">
+                <label class="btn btn-outline-dark" for="teams_button">Teams</label>
+            
+                <input type="button" class="btn-check" id="players_button" autocomplete="off">
+                <label class="btn btn-outline-dark" for="players_button">Players</label>
+            </div>
+        </center>
+        <br>
+
+        <div id="users">
+            {% for user in users %}
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-2 d-flex justify-content-center align-items-center">
+                                <p class="user_profile_num">{{user.id}}</p>
+                            </div>
+                            <div class="col-sm-6 profile_info">
+                                <strong>Type of entry:</strong> Users <br>
+                                <strong>{{ user.name }} </strong><br>
+                                <strong>Username: </strong> {{ user.username }} <br>
+                                <strong>Email: </strong> {{ user.email }} <br>
+                                <a class="btn btn-outline-light btn-sm"  href="{{url_for('update_user', id=user.id)}}">Update User</a>
+                                <a class="btn btn-outline-danger btn-sm"  href="{{ url_for('delete_user', id = user.id)}}">Delete User</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
+        </div>
+
+        <div id="posts">
+            {% for post in posts %}
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-2 d-flex justify-content-center align-items-center">
+                                <img src="{{url_for('static', filename = 'images/'+ post.post_pic)}}" class="admin_images">
+                            </div>
+                            <div class="col-sm-6 profile_info">
+                                <strong>Type of entry:</strong> Posts <br>
+                                <strong>{{ post.slug }} </strong><br>
+                                <strong>Titulo: </strong> {{ post.title}} <br>
+                                <a class="btn btn-outline-light btn-sm"  href="{{url_for('view_post', id=post.id)}}">View Post</a>
+                                <a class="btn btn-outline-light btn-sm"  href="{{url_for('update_post', id=post.id)}}">Update Post</a>
+                                <a class="btn btn-outline-warning btn-sm"  href="{{ url_for('delete_post', id = post.id)}}">Delete Post</a>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
+        </div>
+
+        <div id="teams">
+            {% for team in teams %}
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-2 d-flex justify-content-center align-items-center">
+                                <img src="{{url_for('static', filename = 'images/'+ team.team_pic)}}" class="admin_images">
+                            </div>
+                            <div class="col-sm-6 profile_info">
+                                <strong>Type of entry:</strong> Teams <br>
+                                <strong>{{ team.name }} </strong><br>
+                                <strong>Type: </strong> {{ team.type }} <br>
+                                <strong>Email: </strong> {{ user.email }} <br>
+                                <a class="btn btn-outline-dark btn-sm"  href="{{url_for('view_team', id=team.id)}}">View Team</a>
+                                <a class="btn btn-outline-dark btn-sm"  href="{{url_for('update_team', id=team.id)}}">Update Team</a>
+                                <a class="btn btn-outline-danger btn-sm"  href="{{ url_for('delete_team', id = team.id)}}">Delete Team</a>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
+        </div>
+
+        <div id="players">
+            {% for player in players %}
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-2 d-flex justify-content-center align-items-center">
+                                <img src="{{url_for('static', filename = 'images/'+ player.player_small_pic)}}" class="admin_images">
+                            </div>
+                            <div class="col-sm-6 profile_info">
+                                <strong>Type of entry:</strong> Players <br>
+                                <strong>{{ player.name }} </strong><br>
+                                <strong>Nationality: </strong> {{ player.nationality }} <br>
+                                <strong>Teams: </strong> 
+                                {% for plays in player.plays %}
+                                    {{ plays.name }}
+                                {% endfor %}
+                                <br>
+                                <a class="btn btn-outline-light btn-sm"  href="{{url_for('view_player', id=player.id)}}">View Player</a>
+                                <a class="btn btn-outline-light btn-sm"  href="{{url_for('update_player', id=player.id)}}">Update Player</a>
+                                <a class="btn btn-outline-warning btn-sm"  href="{{ url_for('delete_player', id = player.id)}}">Delete Player</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

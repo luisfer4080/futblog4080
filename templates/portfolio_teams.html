@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %} Equipos {% endblock %}
+
+{% block content %}
+    
+    <div class="container p-2">
+        <div class="text-center mt-3">
+            <h3 class="display-3 text-capitalize">Latest Teams</h3>
+            <div class="heading-line mb-1"></div>
+            <p class="lead">
+            Todas los Equipos de este Blog
+            </p>
+        </div>
+        <!-- Filter buttons -->
+        <div class="row mt-5 mb-4 g-3 text-center">
+            <div class="col-md-12">
+                <a class="btn btn-outline-primary" href="/search?page=2&type=1" type="button" id="all">All</a>
+                <a class="btn btn-outline-primary" href="/search?page=2&type=2" type="button" id="website_b">National Squads</a>
+                <a class="btn btn-outline-primary" href="/search?page=2&type=3" type="button" id="website_b">Club</a>
+            </div>
+        </div>
+        <!-- Portfolio content -->
+        <div class="row">
+            {% for team in teams %}
+                <div class="col-lg-4 col-md-6" id="website">
+                    <div class="portfolio-box shadow">
+                        <img src="{{url_for('static', filename = 'images/'+ team.team_pic)}}" alt="portfolio 1 image" title="portfolio 1 picture" class="img-fluid">
+                        <div class="portfolio-info">
+                            <div class="caption">
+                                <h4><a href="/team/view/{{ team.id }}" style="color: white;">{{team.name}}</a></h4>
+                                <p>{{ team.type }}</p>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <br>
+
+    {% include 'footer.html' %}
+
+{% endblock %}

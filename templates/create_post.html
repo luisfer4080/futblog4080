@@ -1,0 +1,46 @@
+{% extends("base.html") %}
+
+{% block title %}Create Post{% endblock %}
+
+{% block content %}
+
+    <div class="container p-2">
+    
+        <div class="text-center mt-3">
+            <h6 class="display-3 text-capitalize"> Create a post <h6>
+            <div class="heading-line mb-1"></div>
+        </div>
+
+        <br>
+        
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                {{ form.title.label(class = "form-label") }}
+                {{ form.title(class = "form-control") }}
+                <br>
+
+                {{ form.content.label(class = "form-label") }}
+                {{ form.content(class = "form-control", rows = "6") }}
+                <br>
+
+                {{ form.slug.label(class = "form-label") }}
+                {{ form.slug(class = "form-control") }}
+                <br>
+
+                {{ form.image.label(class = "form-label") }}
+                {{ form.image(class = "form-control") }}
+                <br>
+
+                {{ form.submit(class = "btn btn-outline-dark" ) }}
+
+            </form>
+
+            {{ ckeditor.load() }}
+            {{ ckeditor.config(name='content') }}
+        </div>
+        <br>
+    </div>
+
+{% endblock %}
