@@ -23,8 +23,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # Create databse
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'
-app.config['SQLALCHEMY_DATABASE_URI'] =  'postgres://uofwekzwzufycb:57a25b8d20529b749e1b6a17dc5b639a3363a84a9f719b0e7d516d676168e23b@ec2-44-206-137-96.compute-1.amazonaws.com:5432/d58s6d3l4gth2n'
-
+app.config['SQLALCHEMY_DATABASE_URI'] =  'postgres://ldzjofuerwynwl:1350251a34e2dfbc6b0ea843e70bde6646eb31d494ea35a5e4ce1aeb34823331@ec2-3-223-242-224.compute-1.amazonaws.com:5432/d982ur9840c71a'
 
 
 # Initilaize the database
