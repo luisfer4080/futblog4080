@@ -26,8 +26,6 @@ base_path = os.path.dirname(__file__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'
 app.config['SQLALCHEMY_DATABASE_URI'] =  'postgresql://idlqjpubuumkjm:b2a557d9c5e5ebbe5b91e099bc32c8583da91c3e1ea7bf2e938436ffe6aa878a@ec2-54-204-241-136.compute-1.amazonaws.com:5432/d1dotlt8aoabj2'
 
-
-
 # Initilaize the database
 
 db = SQLAlchemy(app)
