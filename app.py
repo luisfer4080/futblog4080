@@ -19,6 +19,7 @@ app.config['SECRET_KEY'] = "xxslinxx_1"
 
 UPLOAD_FOLDER ='static/images/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+base_path = os.path.dirname(__file__)
 
 # Create databse
 
@@ -381,7 +382,7 @@ def create_post():
             db.session.add(post)
             db.session.commit()
 
-            saver.save(os.path.join(app.config['UPLOAD_FOLDER'], pic_name))
+            saver.save(os.path.join(base_path,app.config['UPLOAD_FOLDER'], pic_name))
 
             flash("Post added successfully", category="success")
 
@@ -422,7 +423,7 @@ def update_post(id):
         db.session.add(post_to_update)
         db.session.commit()
 
-        saver.save(os.path.join(app.config['UPLOAD_FOLDER'], pic_name))
+        saver.save(os.path.join(base_path,app.config['UPLOAD_FOLDER'], pic_name))
 
         flash("Post Updated Successfully",category="success")
         return redirect(url_for('home'))
@@ -471,7 +472,7 @@ def create_team():
         db.session.add(team)
         db.session.commit()
 
-        saver.save(os.path.join(app.config['UPLOAD_FOLDER'], pic_name))
+        saver.save(os.path.join(base_path,app.config['UPLOAD_FOLDER'], pic_name))
 
         flash("Team added successfully", category="success")
 
@@ -520,7 +521,7 @@ def update_team(id):
         db.session.add(team_to_update)
         db.session.commit()
 
-        saver.save(os.path.join(app.config['UPLOAD_FOLDER'], pic_name))
+        saver.save(os.path.join(base_path,app.config['UPLOAD_FOLDER'], pic_name))
 
         flash("Team Updated Successfully",category="success")
         return redirect(url_for('home'))
@@ -601,8 +602,8 @@ def create_player():
         db.session.add(player)
         db.session.commit()
 
-        saver.save(os.path.join(app.config['UPLOAD_FOLDER'], pic_name))
-        saver_sm.save(os.path.join(app.config['UPLOAD_FOLDER'], pic_name_sm))
+        saver.save(os.path.join(base_path,app.config['UPLOAD_FOLDER'], pic_name))
+        saver_sm.save(os.path.join(base_path,app.config['UPLOAD_FOLDER'], pic_name_sm))
 
         if length_options == 2:
             if selected_options[0] == 0:
@@ -701,8 +702,8 @@ def update_player(id):
         db.session.add(player_to_update)
         db.session.commit()
 
-        saver.save(os.path.join(app.config['UPLOAD_FOLDER'], pic_name))
-        saver_sm.save(os.path.join(app.config['UPLOAD_FOLDER'], pic_name_sm))
+        saver.save(os.path.join(base_path,app.config['UPLOAD_FOLDER'], pic_name))
+        saver_sm.save(os.path.join(base_path,app.config['UPLOAD_FOLDER'], pic_name_sm))
 
         player_to_update.plays.clear()
 
